@@ -1,0 +1,171 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gebärednsprachtool</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
+    
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      #defaultCanvas0 {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block;
+      }
+
+      .overlay {
+        position: relative;
+        margin: 20px;
+        z-index: 2;
+      }
+
+      .noscroll {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+
+    <div id="Bar" class="w-100 d-flex justify-content-between">
+      <div class="wa-50">
+        <h1 id="Level" style="margin-left: 100px;">Level&nbsp;2</h1>
+      </div>
+
+      <div class="">
+        <div class="Icon">
+          <img id="Icon1" src="/Archiv_png/Icons/Coin.png" />
+          <p id="coincount">250</p>
+        </div>
+        <div class="Icon">
+          <img id="Icon2" src="/Archiv_png/Icons/Flamme.png" />
+          <p>1</p>
+        </div>
+        <div class="Icon">
+          <img id="Icon3" src="/Archiv_png/Icons/Cookie.png" />
+          <p>2</p>
+        </div>
+        <div class="Icon">
+          <img id="Icon4" src="/Archiv_png/Icons/life.png" />
+          <p id="lifecount">5</p>
+        </div>
+      </div>
+      <div class="wa-50">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#jokerModal"
+        >
+          ?
+        </button>
+      </div>
+    </div>
+    <div id="shadowbar">
+      <div id="shadowbar-value"></div>
+    </div>
+    <div class="overlay noscroll">
+      <div>
+        <div id="Exercise">
+          <h1 class="mx-auto">Buchstabiere deinen Namen</h1>
+        </div>
+        <div id="TodoBar" class="mx-auto">
+          <div
+            class="todo"
+            style="text-align: center; top: 1;"
+            id="showUsername"
+          ></div>
+          <div id="canvas-frame"></div>
+        </div>
+
+        <div class="w-100">
+          <button
+          id="WeiterB"
+          type="button"
+          class="mx-auto button"
+          style="display: block;"
+          onclick="location.href='../C_Translate/translate.html';" disabled>
+          WEITER
+        </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="jokerModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="jokerModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h1 class="modal-title" id="jokerModalLabel">Jocker</h1> -->
+            <h5 class="modal-title" id="jokerModalLabel">
+              Ein Joker kostet dich 50 Münzen
+            </h5>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div>
+              <img
+                id="joker-img"
+                src="./lib/Jockerimg/Jocker.png"
+                class="mx-auto"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary no"
+              data-dismiss="modal"
+            >
+              Abbrechen
+            </button>
+            <button
+              type="button"
+              id="verwenden"
+              class="btn yes btn-secondary "
+              onclick="Joker()"
+            >
+             Verwenden
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="jokerImg.js"></script>
+  <script src="sketchML.js"></script>
+</html>
